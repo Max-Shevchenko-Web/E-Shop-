@@ -1,0 +1,12 @@
+@@include('webpTest.js',{});
+@@include('functions.js',{});
+@@include('burgerMenu.js');
+@@include('swiper.min.js',{});
+@@include('wNumb.min.js',{});
+@@include('nouislider.js',{});
+@@include('dynamic_adapt.js',{});
+// @@include('regular.js',{});
+@@include('forms.js',{});
+// @@include('scroll.js',{});
+@@include('sliders.js',{});
+@@include('script.js',{});

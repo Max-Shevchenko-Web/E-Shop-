@@ -1,0 +1,1005 @@
+//<Миксины>=============================================
+@import "mixins.scss";
+//<Миксины/>=============================================
+
+//<Шрифты>===============================================
+
+//<Подключаем шрифты>===================================
+//&display=swap&subset=cyrillic-ext  //подключает кирилик экстентед к шрифтам добавить в конце подключения шрифта
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,regular,500,700,900&display=swap&subset=cyrillic-ext");
+@import "fonts";
+//<Подключаем шрифты>===================================
+
+//<Иконочные шрифты>=================================================
+//@import "icons;
+//<Иконочные шрифты/>=================================================
+
+//<Шрифты по умолчанию>=====================================================
+$fontFamily: "Roboto"; //саммый часто встречаемый шрифт
+//<Шрифты по умолчанию/>=====================================================
+
+//<Шрифты/>==============================================
+
+//<Переменные>==================================================
+$minWidth: 320px;
+$maxWidth: 1400; //общая ширина макета
+$maxWidthContainer: 1140; //ограничивающий контейнер
+$md1: $maxWidthContainer + 12;
+$md2: 991.98; //брейк поинты - планшет , мобилка, маленькая мобилка
+$md3: 767.98;
+$md4: 479.98;
+//<Переменные>==================================================
+
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ>=================================================
+@import "null";
+body {
+  color: #000;
+  font-size: 14px;
+  &.lock {
+    overflow: hidden;
+  }
+}
+//<ОБНУЛЕНИЕ, ОБЩИЕ ПАРАМЕТРЫ/>=================================================
+
+
+
+//<Оболочка>=====================================================
+.wrapper {
+  width: 100%;
+  min-height: 100%;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  // &._loaded {
+
+  // }
+}
+//<Оболочка/>=====================================================
+
+//<ОСНОВНАЯ СЕТКА>=============================================================
+._container {
+  max-width: $maxWidthContainer + px;
+  margin: 0 auto;
+  padding: 0 20px;
+  @media(max-width: $md3+px) {
+    padding: 0 10px;
+  }
+  //Шаблон для адаптивной верстке по размеру экрана, но будем делать сжимающуюся верстку без этих переходов
+  // @media (max-width: $md1+px) {
+  //   max-width: 970px;
+  // }
+  // @media (max-width: $md2+px) {
+  //   max-width: 750px;
+  // }
+  // @media (max-width: $md3+px) {
+  //   max-width: none;
+  //   padding: 0 10px;
+  // }
+}
+//<ОСНОВНАЯ СЕТКА/>=============================================================
+
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ>==============================================================
+@import "forms";
+@import "ui";
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ UI СТИЛЕЙ, ФОРМ И ГОТОВЫХ КЛАССОВ/>==============================================================
+
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=====================================================
+// @import "datepicker";
+// @import "lightgallery";
+// @import "pagging";
+@import "forms";
+@import "popup";
+@import "header";
+@import "footer";
+@import "home";
+@import "catalog";
+//<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ.>=====================================================
+
+
+//<ОСНОВНОЙ БОЛК>===========================================================================================================
+.page {
+  padding: 160px 0 0 0;
+  flex: 1 1 auto;
+  @media (max-width: $md3+px) {
+    padding: 133px 0 0 0;
+  }
+  @media (max-width: 640px) {
+    padding: 85px 0 0 0;
+  }
+  // .page__container
+  &__container {
+    @media (min-width: $md2+px) {
+      display: flex;
+    }
+  }
+  // .page__side
+  &__side {
+    position: relative;
+    z-index: 10;
+    flex: 0 0 260px;
+    @media (max-width: $md2+px) {
+      margin: 0 0 30px 0;
+    }
+  }
+  // .page__menu
+  &__menu {
+    margin: 0 0 40px 0;
+  }
+  // .page__content
+  &__content {
+    margin: 0 0 30px 0;
+    @media (min-width: $md2+px) {
+      flex: 1 1 auto;
+      padding: 0 0 0 30px;
+      min-width: 0; //для слайдера чтоб не ломался изза флекс элемента
+    }
+  }
+  //.page__search
+  &__search {
+    position: relative;
+    z-index: 5;
+    margin: 0 0 22px 0;
+  }
+  // .page__slider
+  &__slider {
+    margin: 0 0 56px 0;
+  }
+  // page__side-news
+  &__news-side {
+    margin: 0 0 75px 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  // .page__side-reviews
+  &__reviews-side {
+  }
+  // .page____products
+  &__products {
+
+  }
+  // .page__brands
+  &__brands {
+    margin-bottom: 32px;
+  }
+  // .page__text
+  &__text {
+    margin: 0 0 38px 0;
+  }
+  // .page__info-menu
+  &__info-menu {
+    margin: 0 0 38px 0;
+  }
+
+}
+//<SideBar>===========================================
+.menu-page {
+  background: url("../img/bg__menu.jpg") top repeat;
+  position: relative;
+  // .menu-page__header
+  &__header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+  }
+  // .menu-page__title
+  &__title {
+    flex: 1 1 auto;
+    color: #ffffff;
+    font-family: "Unisan";
+    line-height: 35 / 30 * 100%;
+    font-size: 30px;
+    text-transform: uppercase;
+    letter-spacing: 0.75px;
+  }
+
+  // .menu-page__burger
+  &__burger {
+    flex: 0 0 36px; //если не указать то могут быть проблемы схлопывания ибо флекс элемент
+    width: 36px;
+    height: 35px;
+    background-color: #068292;
+    display: block;
+    position: relative;
+    cursor: pointer;
+    z-index: 5;
+    padding: 10px 6px;
+    span {
+      transition: all 0.3s ease 0s;
+      top: calc(50% - 1px);
+      left: 0px;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      &:first-child {
+        top: 0px;
+      }
+      &:last-child {
+        top: auto;
+        bottom: 0px;
+      }
+    }
+    &._active {
+      span {
+        transform: scale(0);
+        &:first-child {
+          transform: rotate(45deg);
+          top: calc(50% - 1px);
+        }
+        &:last-child {
+          transform: rotate(-45deg);
+          bottom: calc(50% - 1px);
+        }
+      }
+    }
+  }
+  &__lines {
+    height: 16px;
+    position: relative;
+  }
+  // .menu-page__body
+  &__body {
+    display: none;
+    &._active {
+      display: block;
+    }
+  }
+  // .menu-page__list
+  &__list {
+    > li {
+      border-bottom: 1px solid #1aa7b9;
+    }
+  }
+  &__parent {
+    .menu-page__link {
+      &::after { //стрелочки
+        content: "";
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        transform: translateY(-50%);
+        background: url("../img/menu__arrow.png") 0 0 no-repeat;
+        @media (max-width: $md2+px) {
+          transform: translateY(-50%) rotate(90deg);
+        }
+      }
+    }
+    &._active {
+      .menu-page__submenu {
+        pointer-events: all;
+      }
+      .submenu-page__item {
+        display: block;
+        @media (min-width: $md2+px) {
+          z-index: 2; // при переходе по активным меню всегда переключались на последний так как его я индекс был выше, подняв у активаного мы решили эту проблему
+          transform: translate(0%, 0px);
+        }
+      }
+      .menu-page__link {
+        background-color: #098494;
+        &::after {
+          @media (max-width: $md2+px) {
+            transform: translateY(-50%) rotate(-90deg);
+          }
+        }
+      }
+    }
+  }
+  // .menu-page__link
+  &__link {
+    letter-spacing: 0.3px;
+    font-weight: 300;
+    font-size: 12px;
+    color: #fff;
+    display: block;
+    padding: 12px 20px;
+    position: relative;
+  }
+  @media (min-width: $md2+px) {
+    &:hover {
+      background-color: #098494;
+    }
+  }
+  @media(max-width: $md2+px) {
+    font-size: 14px;
+    padding: 10px 20px;
+  }
+
+  // .menu-page__submenu
+  &__submenu {
+    @media (min-width: $md2+px) {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none; //отключаем срабатывание раскрытия подменю при наведение на место где оно должно быть
+    }
+  }
+}
+.submenu-page {
+  @media (max-width: $md2+px) {
+    background-color:#fff;
+  }
+   // .submenu-page__item
+  &__item {
+    display: none;
+    @media (min-width: $md2+px) {
+      display: block;
+      width: 280px;
+      border: 2px solid #098494;
+      background-color: #fff;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      transition: all 0.3s ease 0s;
+      transform: translate(-100%, 0px);
+    }
+  }
+  // .submenu-page__menu
+  &__menu {
+    padding: 20px 0;
+    border-bottom: 1px solid #dedede;
+    @media (max-width: $md2+px) {
+      padding: 10px 0;
+    }
+  }
+  // .submenu-page__link
+  &__link {
+    color: #1ab9ce;
+    font-size: 12px;
+    font-weight: 300;
+    letter-spacing: 0.3px;
+    padding: 10px 40px;
+    display: block;
+    @media(min-width: $md2+px) {
+      &:hover {
+        background-color: #71c7d3;
+        color:#fff;
+      }
+    }
+    @media(max-width: $md2+px) {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+  }
+  // .submenu-page__product
+  &__product {
+    padding: 15px;
+
+    @media (max-width: $md2+px) {
+      display: none;
+    }
+    .item-product {
+      border: 0;
+    }
+  }
+}
+.items-products {
+  display: flex;
+  margin: 0 -7px 0 2;
+  flex-wrap: wrap;
+  // .items-products__column
+  &__column {
+    flex: 0 1 33.333%;
+    padding: 0 1px;
+    margin: 0 0 30px 0;
+    @media (max-width: $md1+px) and (min-width: $md2+px) {
+      flex: 0 1 50%;
+    }
+    @media (max-width: 840px) {
+      flex: 0 1 50%;
+    }
+    @media (max-width: 600px) {
+      flex: 1 1 100%;
+    }
+  }
+}
+//============
+.item-product {
+  padding: 15px;
+  position: relative;
+  border: 1px solid #f5f5f5;
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  // .item-product__labels
+  //если будет много лейбов будут распологаться один под другим
+  &__labels {
+    position: absolute;
+    left: 15px;
+    top: 15px;
+  }
+  // .item-product__label
+  &__label {
+    margin: 0 0 5px 0;
+    padding: 0 15px;
+    height: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 15px;
+    background-color: #fd8424;
+    color: #ffffff;
+    font-weight: 900;
+    text-transform: uppercase;
+  }
+  // .item-product__image
+  &__image {
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+    img {
+      max-width: 100%;
+      max-height: 245px;
+    }
+  }
+  &__body {
+    padding: 0 10px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  // .item-product__title
+  &__title {
+    color: #36949f;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    display: inline-block;
+    margin: 0 0 5px 0;
+    flex: 1 1 auto;
+    transition: all 0.3s ease 0s;
+    span {
+      display: block;
+      font-weight: 900;
+    }
+    @media(min-width: $md2+px) {
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  // .item-product__footer
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease 0s;
+  }
+  // .item-product__old-price
+  &__old-price {
+    flex: 1 1 100%;
+    text-align: right;
+    color: #999;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 16px;
+    text-decoration: line-through;
+    &::after {
+      font-size: 14px;
+    }
+  }
+  // .item-product__add
+  &__add {
+    width: 40px;
+    height: 40px;
+    background: url("../img/icons/main/cart__gray.png") 0 0 no-repeat;
+  }
+
+  // .item-product__price
+  &__price {
+    color: #333333;
+    font-size: 24px;
+    font-weight: 900;
+    &::after {
+      font-size: 18px;
+    }
+  }
+  // .item-product__hover
+  &__hover {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    //скроем верхний слой
+    transition: transform 0.3s ease 0s;
+    transform: translate(-110%, 0px);
+  }
+  @media (min-width: $md2+px) {
+    &:hover {
+      .item-product__hover {
+        transform: translate(0px, 0px);
+      }
+      .item-product__title,
+      .item-product__footer {
+        opacity: 0;
+      }
+    }
+  }
+}
+.hover-item-product {
+  border: 5px solid #f68038;
+  background-color: rgba(0,0,0,.84);
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  // .hover-item-product__title
+  &__title {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 22px;
+    color: #c2c2c2;
+    margin: 0 0 25px 9px;
+    span {
+      display: block;
+      color: #ffffff;
+      font-weight: 900;
+      margin: 0 0 5px 0;
+    }
+  }
+  // .hover-item-product__options
+  &__options {
+  }
+  // .hover-item-product__body
+  &__body {
+    flex: 1 1 auto;
+    padding: 10px 0 0 0;
+  }
+  // .hover-item-product__cart
+  &__cart {
+    background: url("../img/icons/main/cart_orange.png") 0 0 no-repeat;
+    width: 57px;
+    height: 57px;
+    margin: 0 auto 25px auto;
+    display: block;
+  }
+
+  // .hover-item-product__footer
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  // .hover-item-product__old-price
+  &__old-price {
+    flex: 1 1 100%;
+    text-align: right;
+    color: #999999;
+    font-size: 18px;
+    font-weight: 300;
+    text-decoration: line-through;
+    padding:0 5px 10px 0;
+    &::after {
+      font-size: 14px;
+    }
+  }
+  // .hover-item-product__stok
+  &__stok {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 21px;
+    padding: 0 10px;
+    background-color: #fff;
+    color: #f68038;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 16px;
+    border-radius: 15px;
+  }
+  // .hover-item-product__price
+  &__price {
+    font-size: 24px;
+    font-weight: 900;
+    padding:0 5px 2px 0;
+    &::after {
+      font-size: 18px;
+    }
+  }
+}
+.options-item-product {
+  // .options-item-product__item
+
+  &__item {
+    margin: 0 0 10px 0;
+  }
+  // .options-item-product__label
+  &__label {
+    margin: 0 0 3px 0;
+  }
+  // .options-item-product__value
+  &__value {
+    color: #f68038;
+    font-weight: 900;
+  }
+}
+//==============
+//<SideBar/>===========================================
+
+//<Основная страница>========================================================
+.search-page {
+  display: flex;
+  position: relative;
+  // .search-page__select
+  &__select {
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    background-color: #f3f3f3;
+    cursor: pointer;
+    @media (max-width: $md2+px) {
+      display: none;
+    }
+  }
+  // .search-page__title
+  &__title {
+    color: #999999;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    &::before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      background: url("../img/icons/main/search-page.png") 0 0 no-repeat;
+    }
+    &::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      background: url("../img/icons/main/search_page_arrow.png") 0 0 no-repeat;
+    }
+    &._categories {
+      span {
+        display: none;
+        &:last-child {
+          display: block;
+        }
+      }
+    }
+    &._active {
+      &::after {
+        transform: rotate(-180deg);
+      }
+    }
+    span {
+      margin: 0 13px;
+      border-bottom: 1px dashed;
+      &:last-child {
+        display: none;
+      }
+    }
+  }
+  // .search-page__categories
+  &__categories {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+  }
+  &__input {
+    border: 2px solid #f2f2f2;
+    flex: 1 1 auto;
+    .input {
+      height: 39px;
+
+    }
+  }
+}
+.categories-search {
+  background-color: #fff;
+  display: none;
+  border: 1px solid #f3f3f3;
+  &::after {
+    content: '';
+    background-color: #f68038;
+    height: 4px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+  }
+  &__row {
+    @media (min-width: 992px) {
+      display: flex;
+    }
+    @media (min-width: $md2+px) {
+      padding: 20px 0;
+    }
+  }
+  // .categories-search__column
+  &__column {
+    flex: 0 1 33.333%;
+    padding: 27px 40px;
+    border-right: 1px solid #f3f3f3;
+    &:last-child {
+      border: 0;
+    }
+    @media (max-width: $md1+px) {
+      padding: 27px 20px;
+    }
+    @media (max-width: $md2+px) {
+      padding: 0px 20px;
+      margin: 0 0 20px 0;
+      &:last-child {
+        margin: 0 0 0 0;
+      }
+    }
+  }
+  // .categories-search__list
+  &__list {
+    li {
+      margin: 0 0 20px 0;
+      &:last-child {
+        margin: 0;
+      }
+    }
+  }
+  &__checkbox {
+    .checkbox__input {
+      &:checked + .checkbox__text {
+        color: #f68038;
+      }
+    }
+    .checkbox__text {
+      color: #999;
+      &::before {
+        display: none;
+      }
+    }
+  }
+  //2:26:15
+  // https://youtu.be/YpgTB6Th8Jo?list=PLM6XATa8CAG4Mvraf3gNlNrmc47XMG4Nf&t=8775
+}
+//<Основная страница/>========================================================
+
+//<Side NEWS>========================================================================
+.side-title {
+  font-family: "Unisan";
+  color: #dadada;
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.75px;
+  @media (min-width: $md2+px) {
+    &:hover {
+      color: #1ab9ce;
+    }
+  }
+}
+.news-side {
+  // .news-side__title
+  &__title {
+    display: inline-block;
+    margin: 0 0 25px/30px*1em 0;
+  }
+
+  // .news-side__items
+  &__items {
+  }
+  // .news-side__item
+  &__item {
+    margin: 0 0 45px 0;
+    &:last-child {
+      margin: 0;
+    }
+  }
+  //.news-side__label
+  &__label {
+    color: #333333;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 18px;
+    text-transform: uppercase;
+    margin: 0 0 20px/12px*1em 0;
+    display: inline-block;
+    @media (min-width: $md2+px) {
+      &:hover {
+        color: #fd8322;
+      }
+    }
+  }
+  // .news-side__body
+  &__body {
+    display: flex;
+  }
+  // .news-side__data
+  &__data {
+    flex: 0 0 30px;
+    text-align: center;
+    color: #d8d8d8;
+    font-size: 18px;
+    font-weight: 300;
+    span {
+      display: block;
+      font-weight: 900;
+      font-size: 24px;
+    }
+  }
+
+  // .news-side__text
+  &__text {
+    color: #666666;
+    font-size: 12px;
+    font-weight: 300;
+    padding: 0 0 0 15px;
+    line-height: 18px;
+  }
+}
+//<Side NEWS/>========================================================================
+//<Side REVIEW>========================================================================
+.side-title {
+
+}
+.reviews-side {
+  // .reviews-side__title
+  &__title {
+    display: inline-block;
+    margin: 0 0 20px/30px*1em 0;
+  }
+  // .reviews-side__items
+  &__items {
+  }
+  // .reviews-side__item
+  &__item {
+    margin: 0 0 45px 0;
+    display: block;
+    &:last-child {
+      margin: 0;
+    }
+    @media (min-width: $md2+px) {
+      &:hover {
+        .reviews-side__user,
+        .reviews-side__data {
+          color: #1ab9ce;
+        }
+        .reviews-side__body {
+          background-color: #1ab9ce;
+          color: #fff;
+          &::before {
+            color: #64deee;
+          }
+        }
+      }
+    }
+  }
+  // .reviews-side__header
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 10px 0;
+  }
+  // .reviews-side__user
+  &__user {
+    color: #333333;
+    font-size: 12px;
+    font-weight: 900;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+  // .reviews-side__data
+  &__data {
+    color: #999999;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+    text-transform: uppercase;
+  }
+  // .reviews-side__body
+  &__body {
+    position: relative;
+    padding: 14px 8px 14px 30px;
+    &::before {
+      content: '"';
+      color: #dadada;
+      position: absolute;
+      left: 0;
+      top: 12px;
+      line-height: 1;
+      font-size: 48px;
+      font-weight: 900;
+
+    }
+    color: #666666;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 18px;
+  }
+}
+//<Side REVIEW/>========================================================================
+
+//<Info-menu>==================================================================================
+.info-menu {
+  border-top: 3px dashed #dadada;
+  border-bottom: 3px dashed #dadada;
+  padding: 10px 0;
+  // .info-menu__container
+  &__container {
+  }
+  // .info-menu__body
+  &__body{
+    display: inline-block;
+    @media (max-width: $md3+px) {
+      display: flex;
+    }
+  }
+  // .info-menu__line
+  &__line {
+    display: flex;
+    padding: 15px;
+    align-items: center;
+    border-bottom: 1px solid #b0b0b0;
+    &:last-child {
+      border: 0;
+    }
+    @media (max-width: $md3+px) {
+      display: flex;
+      flex: 0 1 50%;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      border: 0;
+    }
+  }
+  // .info-menu__label
+  &__label {
+    font-weight: 900;
+    color: #333333;
+    margin: 0 35px 0 0;
+    @media (max-width: $md3+px) {
+      margin-bottom: 10px;
+    }
+  }
+  // .info-menu__list
+  &__list {
+    @media (min-width: $md3+px) {
+      display: flex;
+      align-items: center;
+    }
+    li {
+      margin: 0 30px 0 0;
+      &:last-child {
+        margin: 0;
+      }
+      @media (max-width: $md3+px) {
+        margin: 0 0 10px 0;
+        &:last-child {
+          margin: 0;
+        }
+      }
+    }
+  }
+  // .info-menu__link
+  &__link {
+    color: #1ab9ce;
+    font-size: 12px;
+    font-weight: 300;
+      @media (min-width: $md2+px) {
+        &:hover {
+          color: #333333;
+        }
+      }
+  }
+}
+//<Info-menu/>==================================================================================
+
+//<ОСНОВНОЙ БОЛК/>===========================================================================================================
+
+
+//https://youtu.be/uAZsdUtausg?list=PLM6XATa8CAG4Mvraf3gNlNrmc47XMG4Nf&t=5211  1:25:51
