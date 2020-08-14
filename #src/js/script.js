@@ -94,18 +94,104 @@ if (document.querySelector('.price-filter')) {
     priceEnd.value = Math.trunc(values[handle, 1]);
   });
 }
+//=============================================
 
-//делаем прослушу на клик по спойлеру фильтра
+//делаем прослушки на клик по спойлерам фильтра
 const spollers = document.querySelector('._spollers');
-
-if (spollers) {
-  const spollersArray = spollers.querySelectorAll('._spoller');
-  spollersArray.forEach(item => {
-    const spollersToggle = () => {
-      item.classList.toggle('_active');
-      _slideToggle(item.parentNode.children[1]);
+const createSpoilers = () => {
+  if (spollers) {
+    const fillterItem = document.querySelector('.filter__title');
+    const spollersToggle = (e) => {
+      const target = e.target;
+      throttle(() => {
+        target.classList.toggle('_active');
+        _slideToggle(target.nextElementSibling);
+      }, 500)();
     };
-    item.addEventListener('click', throttle(spollersToggle, 500));
-    item.parentNode.children[1].style.display = 'none';
+
+    const spollersArray = spollers.querySelectorAll('._spoller');
+    spollersArray.forEach(item => {
+      item.addEventListener('click', spollersToggle);
+      item.nextElementSibling.style.display = 'none';
+    });
+
+    const toggleFillterItemClass = () => {
+      if (isMobile.any()) {
+        fillterItem.classList.remove('_active');
+        fillterItem.classList.add('_spol');
+        fillterItem.nextElementSibling.style.display = 'none';
+        fillterItem.addEventListener('click', spollersToggle);
+      } else {
+        fillterItem.removeEventListener('click', spollersToggle);
+        fillterItem.classList.remove('_spol');
+      }
+    }
+    toggleFillterItemClass();
+
+    //Resize
+    window.onresize = toggleFillterItemClass;
+  }
+}
+
+createSpoilers();
+
+//переключение на каталог или список
+const viewCatalog = document.querySelector('.actions-catalog__view');
+
+if (viewCatalog) {
+  const optionItems = [...document.querySelectorAll('.view-catalog__item')];
+  const catalogViewArray = [document.querySelector('.catalog__products_grid.items-products'),document.querySelector('.catalog__products-list.products-list')];
+  const switchViewMode = (e) => {
+    const target = e.target;
+    optionItems.forEach((item, index) => {
+      item.classList.remove('_active');
+      catalogViewArray[index].classList.toggle('_active');
+    });
+    target.classList.add('_active');
+  }
+  
+  optionItems.forEach(item => {
+    item.addEventListener('click', switchViewMode);
+  });
+}
+//переключение между списком и сеткой товаров
+
+//вешаем класс на кнопку сравнить compare
+const buttonsCompares = [...document.querySelectorAll('.tog-compare')];
+if(buttonsCompares.length > 0) {
+  buttonsCompares.forEach(item => {
+    item.addEventListener('click', (e)=> {
+      const target = e.target;
+      target.closest('.tog-compare').classList.toggle('_active');
+    });
   })
 }
+
+//добавляем скидки
+const catalogProductsList = document.querySelector('.catalog__products-list');
+if (catalogProductsList) {
+  const salaryLabel = [...document.querySelectorAll('.item-list__label')];
+  const salaryOldPrice = [...document.querySelectorAll('.item-list__old-price')];
+  const isSalary = [0,1,0,0,1,1,0,0,1];
+
+  for(i=0; i<=catalogProductsList.children.length; i++) {
+    if (isSalary[i]) {
+      salaryLabel[i].classList.toggle('_active');
+      salaryOldPrice[i].classList.toggle('_active');
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

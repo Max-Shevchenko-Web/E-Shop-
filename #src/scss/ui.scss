@@ -36,7 +36,8 @@
   clear: both;
 }
 .rub::after {
-  content: "\20BD";
+  content: 'RUB';
+  // content: "\20BD";
   // content: "₽";
 }
 //===============================================

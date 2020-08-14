@@ -87,7 +87,7 @@ body {
 //<ПОДКЛЮЧЕНИЕ ФАЙЛОВ СТИЛЕЙ СТРАНИЦ И ЭЛЕМЕНТОВ>=====================================================
 // @import "datepicker";
 // @import "lightgallery";
-// @import "pagging";
+@import "pagging";
 @import "forms";
 @import "popup";
 @import "header";
@@ -157,7 +157,7 @@ body {
   }
   // .page____products
   &__products {
-
+    
   }
   // .page__brands
   &__brands {
@@ -173,6 +173,38 @@ body {
   }
 
 }
+//===================================================================
+.breadcrumbs {
+  overflow: auto;
+  // .breadcrumbs__list
+  &__list {
+    display: flex;
+    align-items: center;
+    margin: 0 0 20px 0;
+    height: 20px;
+    white-space: nowrap;
+    li {
+      padding: 0 30px 0 0;
+      margin: 0 10px 0 0;
+      background: url("../img/icons/catalog/li_arrow.png") right / 10px no-repeat;
+      &:last-child {
+        margin: 0;
+        background: none !important;
+      }
+    }
+  }
+  // .breadcrumbs__link
+  &__link {
+    color: #1ab9ce;
+    text-decoration: underline;
+  }
+  // .breadcrumbs__item
+  &__item {
+    color: #999999;
+    font-weight: 300;
+  }
+}
+//===================================================================
 //<SideBar>===========================================
 .menu-page {
   background: url("../img/bg__menu.jpg") top repeat;
@@ -384,8 +416,11 @@ body {
 }
 .items-products {
   display: flex;
-  margin: 0 -7px 0 2;
+  margin: 0 -7px 0 2px;
   flex-wrap: wrap;
+  &.catalog__products_grid {
+    display: none;
+  }
   // .items-products__column
   &__column {
     flex: 0 1 33.333%;
@@ -544,7 +579,7 @@ body {
     font-weight: 300;
     line-height: 22px;
     color: #c2c2c2;
-    margin: 0 0 25px 9px;
+    margin: 0 0 25px 0;
     span {
       display: block;
       color: #ffffff;
@@ -560,6 +595,26 @@ body {
     flex: 1 1 auto;
     padding: 10px 0 0 0;
   }
+  // .hover-item-product__compare
+  &__compare {
+    cursor: pointer;
+    outline: none;
+    background: url("../img/icons/catalog/srawnit.png") left no-repeat;
+    padding: 0 0 0 30px;
+    line-height: 21px;
+    display: inline-block;
+    color: #ffffff;
+    span {
+      font-weight: 300;
+      border-bottom: 1px dashed;
+    }
+    &._active {
+      background: url("../img/icons/catalog/compare.png") left no-repeat;
+      span {
+          color: rgb(246, 128, 56);
+      }
+    }
+  }
   // .hover-item-product__cart
   &__cart {
     background: url("../img/icons/main/cart_orange.png") 0 0 no-repeat;
@@ -567,8 +622,11 @@ body {
     height: 57px;
     margin: 0 auto 25px auto;
     display: block;
+    // .hover-item-product__cart_catalog
+    &_catalog {
+      margin: 0;
+    }
   }
-
   // .hover-item-product__footer
   &__footer {
     display: flex;

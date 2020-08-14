@@ -1,0 +1,51 @@
+.pagging {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  //.pagging__arrows
+  &__arrow {
+    width: 33px;
+    height: 26px;
+    cursor: pointer;
+    background: url("../img/icons/catalog/sl_arrow_gray.svg") 0 0 /100% no-repeat;
+    @media (min-width: $md2+px) {
+      &:hover {
+        background: url("../img/icons/catalog/sl_arrow_gray_active.svg") 0 0 /100% no-repeat;
+      }
+    }
+    &:first-child {
+      &:hover {
+        transform: rotate(-180deg);
+        margin: 4px 0 0 0;
+      }
+    }
+    &:last-child {
+      transform: rotate(-180deg);
+      &:hover {
+        margin: 0 0 5px 0;
+        transform: rotate(0deg);
+      }
+    }
+  }
+  //.pagging__list
+  &__list {
+    margin: 0 35px;
+    display: flex;
+    li {
+     
+    }
+  }
+  //.pagging__item
+  &__item {
+      width: 33px;
+      height: 33px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+    &._active {
+      color: #ffffff;
+      background-color: #fd8424;
+    }
+  }
+}
